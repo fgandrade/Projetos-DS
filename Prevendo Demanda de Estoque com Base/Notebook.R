@@ -9,7 +9,7 @@ getwd()
 
 # Carregando Dataset
 library(data.table)
-dataset <- fread(file.choose(), header = TRUE) # Escolha train.csv
+dataset <- fread(file.choose(), header = TRUE, col.names=c("id", "Semana", "Agencia_ID", "Canal_ID", "Ruta_SAK", "Cliente_ID", "Producto_ID", "Venta_uni_hoy", "Venta_hoy", "Dev_uni_proxima", "Dev_proxima", "Demanda_uni_equil")) # Escolha train.csv
 
 # Exibindo informações do Dataset
 dim(dataset)
@@ -29,7 +29,7 @@ corrplot(cor_matrix, method = "color")
 ### Conforme observamos, as variáveis 'Venta_uni_hoy' e 'Venta_hoy' possuem uma alta correlação positiva com a variável target('Demanda_uni_equil') ###
 
 # Gerando um dataframe de amostra a partir do original(
-sample_df <- dataset[1:1000000,]
+sample_df <- dataset[1:500000,]
 
 # Gerando outro dataframe com apenas as variáveis de alta correlação
 high_cor <- sample_df
